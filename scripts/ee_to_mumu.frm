@@ -1,6 +1,15 @@
 * Process: e+ e- -> mu+ mu-
+
+* Indices 
 Indices mu, nu, mu1, nu1;
-Symbols s, t, u, e, pi, alpha, costh;
+
+* Kinematic variables
+Symbols s, t, u, costh, beta;
+
+* Physical constants
+Symbols e, pi, alpha;
+
+* Four-vectors
 Vectors p1, p2, p3, p4;
 
 * Amplitude Squared (Diagrammatica conventions)
@@ -27,11 +36,31 @@ id e^4 = 16 * pi^2 * alpha^2;
 * Spin averaging (1/2 * 1/2)
 multiply 1/4; 
 
-* 3. Kinematics (Massless Limit)
-id p1.p1 = 0; id p2.p2 = 0; id p3.p3 = 0; id p4.p4 = 0;
-id p1.p2 = s/2; id p3.p4 = s/2;
-id p1.p3 = -t/2; id p2.p4 = -t/2;
-id p1.p4 = -u/2; id p2.p3 = -u/2;
+* 3. Kinematics 
+* Repeat substitutions as needed.
+* We form all Mandelstam for 2 to 2 
+* diagrams
+repeat;
+
+    id p1.p1 = 0;
+    id p2.p2 = 0;
+    id p3.p3 = 0;
+    id p4.p4 = 0;
+
+    id p1.p2 = (s - p1.p1 - p2.p2)/2;
+    id p3.p4 = (s - p3.p3 - p4.p4)/2;
+
+
+    id p1.p3 = (p1.p1 + p3.p3 - t)/2;
+    id p2.p4 = (p2.p2 + p4.p4 - t)/2;
+
+
+    id p1.p4 = (p1.p1 + p4.p4 - u)/2;
+    id p2.p3 = (p2.p2 + p3.p3 - u)/2;
+endrepeat;
+
+.sort
+
 
 * 4. Angular dependency
 id t = -s/2 * (1 - costh);
