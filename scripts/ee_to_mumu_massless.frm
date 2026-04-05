@@ -28,6 +28,7 @@ Local Msq = (e^4 / s^2) * d_(mu, rho) * d_(nu, sigma) *
 * Differential cross section formula
 Local dSigma = (1 / (64 * pi^2 * s)) * Msq;
 
+.sort
 trace4, 1;
 trace4, 2;
 .sort 
@@ -45,8 +46,12 @@ multiply 1/4;
 
 * 3. Kinematics 
 * Repeat substitutions as needed.
-* We form all Mandelstam for 2 to 2 
-* diagrams
+* We form all Mandelstam 
+* Note that here what happens
+* is symbolic substitution
+* There are no multiplications
+* done.
+
 repeat;
 
     id p1.p1 = 0;
