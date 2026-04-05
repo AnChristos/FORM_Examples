@@ -63,3 +63,16 @@ def get_form_expr(filename="temp", var_name="dSigma"):
     
     print(f"Error: Could not find variable '{var_name}' in {filename}.out")
     return None
+
+def capture_physics_expr(filename, var_name):
+    """
+    Retrieves the FORM output and cleans it for Python eval().
+    """
+    raw_str = get_form_expr(filename, var_name)
+    if not raw_str:
+        return None 
+    # 1. Remove newlines and extra spaces for a clean string
+    clean_str = " ".join(raw_str.split())
+    # 2. Convert FORM power syntax (s^-1 -> s**-1)
+    py_expr = clean_str.replace('^', '**')
+    return py_expr

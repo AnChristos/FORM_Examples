@@ -1,4 +1,4 @@
-FORM 5.0.0 (Jan 27 2026, v5.0.0)                 Run: Sun Apr  5 03:46:45 2026
+FORM 5.0.0 (Jan 27 2026, v5.0.0)                 Run: Sun Apr  5 04:30:11 2026
     * Process: e+ e- -> mu+ mu-
     
     * Indices 
@@ -110,24 +110,19 @@ Time =       0.00 sec    Generated terms =          2
           dSigma         Terms in output =          2
                          Bytes used      =         88
     
-    
-    * 4. Angular dependency
-    id t = -s/2 * (1 - costh);
-    id u = -s/2 * (1 + costh);
-    
     bracket alpha, s;
     Print dSigma;
     .end
 
-Time =       0.00 sec    Generated terms =          6
+Time =       0.00 sec    Generated terms =          2
              Msq         Terms in output =          2
-                         Bytes used      =        104
+                         Bytes used      =        116
 
-Time =       0.00 sec    Generated terms =          6
+Time =       0.00 sec    Generated terms =          2
           dSigma         Terms in output =          2
-                         Bytes used      =         92
+                         Bytes used      =        100
 
    dSigma =
-       + s^-1*alpha^2 * ( 1/4 + 1/4*costh^2 );
+       + s^-3*alpha^2 * ( 1/2*u^2 + 1/2*t^2 );
 
   0.00 sec out of 0.00 sec

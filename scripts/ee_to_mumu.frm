@@ -61,11 +61,6 @@ endrepeat;
 
 .sort
 
-
-* 4. Angular dependency
-id t = -s/2 * (1 - costh);
-id u = -s/2 * (1 + costh);
-
 bracket alpha, s;
 Print dSigma;
 .end
