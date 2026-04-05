@@ -4,8 +4,10 @@ Symbols s, t, u, e, pi, alpha, costh;
 Vectors p1, p2, p3, p4;
 
 * Amplitude Squared (Diagrammatica conventions)
-Local Msq = (e^4 / s^2) * d_(mu, mu1) * d_(nu, nu1) * (g_(1, p2) * g_(1, mu) * g_(1, p1) * g_(1, nu)) *
-    (g_(2, p3) * g_(2, mu1) * g_(2, p4) * g_(2, nu1));
+Local Msq = (e^4 / s^2) * 
+            d_(mu, mu1) * d_(nu, nu1) * 
+            (g_(1, p2) * g_(1, mu) * g_(1, p1) * g_(1, nu)) * 
+            (g_(2, p3) * g_(2, mu1) * g_(2, p4) * g_(2, nu1));
 
 * Differential cross section formula
 Local dSigma = (1 / (64 * pi^2 * s)) * Msq;
