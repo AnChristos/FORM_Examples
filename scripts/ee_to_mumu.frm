@@ -1,7 +1,7 @@
 * Process: e+ e- -> mu+ mu-
 
 * Indices 
-Indices mu, nu, mu1, nu1;
+Indices mu, nu, rho, sigma;
 
 * Kinematic variables
 Symbols s, t, u;
@@ -12,11 +12,19 @@ Symbols e, pi, alpha;
 * Four-vectors
 Vectors p1, p2, p3, p4;
 
-* Amplitude Squared (Diagrammatica conventions)
-Local Msq = (e^4 / s^2) * 
-            d_(mu, mu1) * d_(nu, nu1) * 
+
+* ------------------------------------------------------------------
+*  Matrix Element Squared for e+(p2) e-(p1) -> mu+(p3) mu-(p4)
+* (|M|^2) = (e^4 / s^2) * g^{mu rho} * g^{nu sigma} *
+*            Tr[slash(p2) * gamma_mu  * slash(p1) * gamma_nu ] *
+*            Tr[slash(p3) * gamma_rho * slash(p4) * gamma_sigma]
+*  FORM / Diagrammatica conventions
+*  g_ is gamma matrix , the metric is d_
+*  g_(1,...) is Electron current ; g_(2,...) is Muon current
+* ------------------------------------------------------------------ 
+Local Msq = (e^4 / s^2) * d_(mu, rho) * d_(nu, sigma) * 
             (g_(1, p2) * g_(1, mu) * g_(1, p1) * g_(1, nu)) * 
-            (g_(2, p3) * g_(2, mu1) * g_(2, p4) * g_(2, nu1));
+            (g_(2, p3) * g_(2, rho) * g_(2, p4) * g_(2, sigma));
 
 * Differential cross section formula
 Local dSigma = (1 / (64 * pi^2 * s)) * Msq;
