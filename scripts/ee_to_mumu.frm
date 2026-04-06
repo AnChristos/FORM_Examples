@@ -87,6 +87,7 @@ endrepeat;
 .sort
 
 bracket alpha, s, pfInOutRatio;
+factorize;
 Print Msq;
 Print dSigma;
 .end
