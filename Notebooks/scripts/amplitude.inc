@@ -42,10 +42,6 @@ NSkip `Amp';
 #enddo
 .sort:amplitude-1;
 *
-*   Just for a check we print the highest i and mu indices
-*
-#message highest i is i`$imax', highest mu is mu`$mumax';
-*
 *   Now construct the conjugate
 *
 Skip;

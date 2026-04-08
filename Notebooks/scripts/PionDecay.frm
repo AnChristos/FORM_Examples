@@ -11,8 +11,11 @@ Local M = - (Gf/sqrt_(2)) * Vud * fpi * (
             VB(i1, p3, ml) * g(i1, i2, pPion) * (g(i2, i3) - g(i2, i3, k5)) * U(i3, p4, 0)
           );
 
+
 #call squareamplitude(M, Msq)
 .sort
+
+*Convention
 Multiply -1;
 .sort
 
@@ -24,6 +27,7 @@ id p3.p4 = (mpi^2 - ml^2)/2;
 id pPion.p3 = (mpi^2 + ml^2)/2;
 id pPion.p4 = (mpi^2 - ml^2)/2;
 .sort
+
 
 * Differential Decay Rate
 Local dGamma = ( pRest / (32 * pi^2 * mpi^2) ) * Msq;
