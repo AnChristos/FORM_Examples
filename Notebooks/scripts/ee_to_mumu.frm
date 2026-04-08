@@ -88,8 +88,17 @@ Local dSigma = (1 / (64 * pi^2 * s)) * pfInOutRatio * Msq;
 .sort
 
 bracket alpha, s, pfInOutRatio;
-Format C;
+* Print and save in Fortran format
+Format Fortran;
 Print Msq;
 Print dSigma;
 #write <ee_to_mumu.txt> "%e;", dSigma;
+.sort
+
+* Print in FORM format factorized
+Format;
+factorize;
+Print Msq;
+Print dSigma;
+.sort
 .end

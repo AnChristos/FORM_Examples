@@ -47,8 +47,8 @@ def capture_physics_expr(filename="tmp.txt"):
     """
     try:
         with open(filename, 'r') as f:
-            content = f.read().replace('\n', '').replace(' ', '').strip()
-            content = content.rstrip(';')        
+            content = f.read().replace('\n', '').replace(' ', '').replace('&','').strip()
+            content = content.rstrip(';')       
             return content
             
     except FileNotFoundError:
