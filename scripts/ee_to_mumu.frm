@@ -67,8 +67,8 @@ repeat;
 
     id p1.p1 = 0;
     id p2.p2 = 0;
-    id p3.p3 = Mass^2;
-    id p4.p4 = Mass^2;
+    id p3.p3 = Mass;
+    id p4.p4 = Mass;
 
     id p1.p2 = (s - p1.p1 - p2.p2)/2;
     id p3.p4 = (s - p3.p3 - p4.p4)/2;
@@ -88,7 +88,8 @@ Local dSigma = (1 / (64 * pi^2 * s)) * pfInOutRatio * Msq;
 .sort
 
 bracket alpha, s, pfInOutRatio;
-factorize;
+Format C;
 Print Msq;
 Print dSigma;
+#write <ee_to_mumu.txt> "%e;", dSigma;
 .end

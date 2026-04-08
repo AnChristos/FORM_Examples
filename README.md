@@ -24,7 +24,7 @@ Simple examples of Feynman amplitudes using **FORM 5.0**
     - We import the utils in the first cell
     - At the start of second cell  we use ``%%pyForm name``.
     We then put the actual ``form`` code in the cell
-    - Running the cell we  get a ``name.frm`` and ``name.out`` 
-    in the scripts folder.
-    - We the use python to get the line with result 
+    - The ``form`` code  writes the result in a file in the current directory 
+    - We the use python to get the result 
     and do further manipulations.
+     - When the scripts runs we  also get a ``name.frm`` in the scripts folder.

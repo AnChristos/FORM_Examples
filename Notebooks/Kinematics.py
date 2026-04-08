@@ -3,11 +3,11 @@ import numpy as np
 def kinematics2To2(sqrt_s, theta, m1=0, m2=0, m3=0, m4=0):
     """
     Calculates s, t, u and the phase space ratio pf/pi 
-    for a general 2 -> 2 process in the CM frame.
+    for a 2 -> 2 process in the CM frame.
     """
     s = sqrt_s**2
 
-    # Källen lambda function (already vectorized by standard math ops)
+    # Källen lambda function
     def la(a, b, c): 
         return a**2 + b**2 + c**2 - 2*a*b - 2*b*c - 2*c*a
 

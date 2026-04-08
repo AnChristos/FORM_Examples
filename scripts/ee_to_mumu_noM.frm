@@ -43,21 +43,21 @@ Local Msq = (e^4 / s^2) * d_(mu, nu) * d_(rho, sigma) *
             (g_(1, p2) * g_(1, mu) * g_(1, p1) * g_(1, rho)) * 
             (g_(2, p3) * g_(2, nu) * g_(2, p4) * g_(2, sigma));
 
+
 .sort
 trace4, 1;
 trace4, 2;
-.sort 
+.sort
 contract;
 Print Msq;
 .sort
-
 
 * Physics & Normalization
 id e^4 = 16 * pi^2 * alpha^2;
 * Spin averaging (1/2 * 1/2)
 multiply 1/4; 
 
-* 3. Mandelstam
+* 3. Kinematics 
 * Repeat substitutions as needed.
 * We form all Mandelstam 
 * Note that here what happens
@@ -83,12 +83,14 @@ repeat;
 endrepeat;
 .sort
 
-* Differential cross section 
-Local dSigma =  (1 / (64 * pi^2 * s)) * pfInOutRatio * Msq;
+* Differential cross section formula
+Local dSigma = (1 / (64 * pi^2 * s)) * pfInOutRatio * Msq;
+.sort
 
-bracket alpha, s,pfInOutRatio;
-factorize;
+bracket alpha, s, pfInOutRatio;
+Format C;
 Print Msq;
 Print dSigma;
+#write <ee_to_mumu_noM.txt> "%e;", dSigma;
 
 .end
