@@ -1,6 +1,0 @@
-pow(s,-3)*pow(alpha,2)*pow(Mass,2)*pfInOutRatio - pow(s,-3)*u*pow(alpha,2)*
-      Mass*pfInOutRatio + 1./2.*pow(s,-3)*pow(u,2)*pow(alpha,2)*pfInOutRatio
-       - pow(s,-3)*t*pow(alpha,2)*Mass*pfInOutRatio + 1./2.*pow(s,-3)*pow(t,2)
-      *pow(alpha,2)*pfInOutRatio + pow(s,-2)*pow(alpha,2)*pow(Mass,2)*
-      pfInOutRatio;
-;

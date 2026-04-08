@@ -1,3 +1,0 @@
-1./2.*pow(s,-3)*pow(u,2)*pow(alpha,2)*pfInOutRatio + 1./2.*pow(s,-3)*pow(t,2)*
-      pow(alpha,2)*pfInOutRatio;
-;
