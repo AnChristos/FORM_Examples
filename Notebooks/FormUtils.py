@@ -43,7 +43,7 @@ def pyForm(line, cell):
 
 def capture_physics_expr(filename="tmp.txt"):
     """
-    Read saved FORM C-style output and return it.
+    Read saved FORM output and return it.
     """
     try:
         with open(filename, 'r') as f:
