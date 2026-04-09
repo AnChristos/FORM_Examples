@@ -1,6 +1,5 @@
 
 * Trace manipulation
-
 #-
 * Above suppresses extra output
 Off Statistics;
@@ -80,8 +79,10 @@ endrepeat;
 #do i = 1,10
     Trace4,`i';
 #enddo
+.sort
 
-
+* Group terms by the physical couplings and masses
+Bracket cv, ca, m1, m2;
 .sort
 Print;
 .end
