@@ -23,10 +23,6 @@ Local M = (e^2 / s) * (VB(i1, p2, 0) * g(i1, i2, mu1) * U(i2, p1, 0)) * (UB(i3, 
 #call squareamplitude(M, Msq)
 
 .sort
-trace4, 1;
-trace4, 2;
-.sort
-contract;
 Print Msq;
 .sort
 

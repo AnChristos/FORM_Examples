@@ -20,11 +20,8 @@ Symbols pfInOutRatio;
 
 Local M = (e^2 / s) * (VB(i1, p2, 0) * g(i1, i2, mu1) * U(i2, p1, 0)) * (UB(i3, p3, 0) * g(i3, i4, mu1) * V(i4, p4, 0));
 #call squareamplitude(M, Msq)
+.sort
 
-.sort
-trace4, 1;
-trace4, 2;
-.sort
 contract;
 Print Msq;
 .sort

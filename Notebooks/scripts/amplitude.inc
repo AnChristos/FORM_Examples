@@ -1,6 +1,6 @@
 *-------------------------------------------------------------------------*
 * amplitude.inc
-* Original Author: Jos Vermaseren (NIKHEF)
+* Original from: Jos Vermaseren (NIKHEF)
 * See also : J.A.M.Vermaseren "New features of FORM" math-ph/0010025
 *
 * Core Procedure: squareamplitude 
@@ -10,11 +10,11 @@
 *-------------------------------------------------------------------------*
 
 AutoDeclare Index i,mu,k;
-AutoDeclare Symbol m,x;
+AutoDeclare Symbol m,x,lgnal;
 AutoDeclare Vector p,q;
 Vector q,q1,q2,p1,...,p10;
-CF  UB,U,VB,V,g,gstring,eps;
-CF  fprop,phprop,gprop,prop;
+CF  UB,U,VB,V,g,eps;
+CF  fprop,phprop,Zprop,Wprop,prop;
 Index k5=0, k6=0, k7=0;
 *
 *
@@ -36,7 +36,10 @@ NSkip `Amp';
 #enddo
 #$mumax = 0;
 #do mu = 1,20
-    if ( match(g(?a,mu`mu')) || match(phprop(mu`mu',?a)) || match(phprop(mu?,mu`mu',?a)) );
+    if ( match(g(?a,mu`mu')) 
+         || match(phprop(mu`mu',?a)) || match(phprop(mu?,mu`mu',?a)) 
+         || match(Zprop(mu`mu',?a)) || match(Zprop(mu?,mu`mu',?a))
+         || match(Wprop(mu`mu',?a)) || match(Wprop(mu?,mu`mu',?a)) );
         $mumax = `mu';
     endif;
 #enddo
@@ -58,6 +61,8 @@ Multiply replace_(<mu1,mu{`$mumax'+1}>,...,<mu`$mumax',mu{2*`$mumax'}>);
 id  g(i1?,i2?,mu?) = g(i2,i1,mu);
 id  fprop(i1?,i2?,?a) = fprop(i2,i1,?a);
 id  phprop(mu1?,mu2?,p?) = phprop(mu2,mu1,p);
+id  Zprop(mu1?,mu2?,?a) = Zprop(mu2,mu1,?a);
+id  Wprop(mu1?,mu2?,?a) = Wprop(mu2,mu1,?a);
 *
 *   and exchange U and UB, V and VBAR
 *
@@ -85,6 +90,8 @@ id  eps(mu1?,p?)*eps(mu2?,p?) = -d_(mu1,mu2);
 *
 id  fprop(i1?,i2?,p?,m?) = (g(i1,i2,p)+g(i1,i2)*m)*prop(p.p-m^2);
 id  phprop(mu1?,mu2?,q?) = -d_(mu1,mu2)*prop(q.q);
+id  Zprop(mu1?,mu2?,q?,m?,lgnal?) = (-d_(mu1,mu2) + lgnal*q(mu1)*q(mu2)/(m^2)) * prop(q.q - m^2);
+id  Wprop(mu1?,mu2?,q?,m?,lgnal?) = (-d_(mu1,mu2) + lgnal*q(mu1)*q(mu2)/(m^2)) * prop(q.q - m^2);
 *
 *   String the gamma matrices together in traces.
 *
