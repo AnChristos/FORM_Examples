@@ -1,6 +1,11 @@
 
 * Process: e+ e- -> mu+ mu- 
 
+* Suppress extra output
+#-
+Off Statistics;
+Off FinalStats;
+
 #include amplitude.inc
 
 * Kinematic variables

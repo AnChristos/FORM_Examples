@@ -1,6 +1,11 @@
 
 * Process: pion -> fermion neutrino
 
+* Suppress extra output
+#-
+Off Statistics;
+Off FinalStats;
+
 #include amplitude.inc
 
 * Constants and Kinematics
@@ -37,7 +42,7 @@ bracket Gf, Vud, fpi, pi, mpi;
 
 * Save to file 
 Format C;
-#write <pi_decay_rate.txt> "%e;", dGamma;
+#write <PionDecay.txt> "%e;", dGamma;
 .sort
 
 * Print 
