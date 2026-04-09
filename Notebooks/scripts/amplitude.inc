@@ -48,7 +48,7 @@ Skip;
 L   `Amp'C = `Amp';
 id  i_ = -i_;
 *
-*   Make a new set of dummy indices above $imax and $jmax.
+*   Make a new set of dummy indices above $imax and $mumax.
 *
 Multiply replace_(<i1,i{`$imax'+1}>,...,<i`$imax',i{2*`$imax'}>);
 Multiply replace_(<mu1,mu{`$mumax'+1}>,...,<mu`$mumax',mu{2*`$mumax'}>);

@@ -8,15 +8,10 @@ Symbols Gf, Vud, fpi, ml, mpi;
 
 
 Local M = - (Gf/sqrt_(2)) * Vud * fpi * ( 
-            VB(i1, p3, ml) * g(i1, i2, pPion) * (g(i2, i3) - g(i2, i3, k5)) * U(i3, p4, 0)
+            VB(i1, p4, 0) * (g(i1, i2) - g(i1, i2, k5)) * g(i2, i3, pPion) * V(i3, p3, ml)
           );
 
-
 #call squareamplitude(M, Msq)
-.sort
-
-*Convention
-Multiply -1;
 .sort
 
 * --- Kinematics ---
