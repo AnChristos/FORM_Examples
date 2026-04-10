@@ -27,3 +27,17 @@ def kinematics2To2(sqrt_s, theta, m1=0, m2=0, m3=0, m4=0):
 
     return s, t, u, ratio
 
+def kinematics2To2Lab (E1, theta, m):
+    """
+    E1,theta: Incoming particle assumed massless
+    m : target particle mass 
+    """
+    E3 = E1 / (1 + (E1 /m) * (1 - np.cos(theta)))
+    
+    s = m**2 + 2 * m * E1
+    t = -2 * E1 * E3 * (1 - np.cos(theta))
+    u = 2 * m**2 - s - t
+    
+    E3E1ratioSq = (E3 / E1)**2
+    
+    return s, t, u, E3E1ratioSq

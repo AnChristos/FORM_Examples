@@ -62,6 +62,7 @@ Local dSigma = (1 / (64 * pi^2 * s)) * pfInOutRatio * Msq;
 .sort
 
 bracket alpha, s, pfInOutRatio;
+.sort
 * Save
 Format C;
 #write <ee_to_mumu.txt> "%e;", dSigma;

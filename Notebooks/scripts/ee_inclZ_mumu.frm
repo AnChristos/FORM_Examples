@@ -15,7 +15,7 @@ Symbols s, t, u;
 Symbols e, pi, alpha, cv, ca, mZ, gweak;
 
 * Three momenta ratio in CM
-Symbols pfInOutRatio,n;
+Symbols pfInOutRatio;
 
 Local MQED = (e^2 )    * (VB(i1, p2, 0) * g(i1, i2, mu1) * U(i2, p1, 0))  
                        * phprop(mu1, mu2, q) 
@@ -40,17 +40,20 @@ multiply 1/4;
 id e^4 = 16 * pi^2 * alpha^2;
 
 
-* Kinematics 
+* Conservation
 id q = p1 + p2;
 .sort
+* propagator handling
 id prop(x?) = (x)^-1;
 .sort
 id (q.q)^-1 = (s)^-1;
 id (-mZ^2 + q.q)^-1 = (s - mZ^2)^-1;
+.sort
+
+* Mandelstam 
 id q.q = s;
 .sort
 * Repeat substitutions as needed.
-* We form all Mandelstam 
 repeat;
 * Massless limit
     id p1.p1 = 0;
@@ -74,7 +77,7 @@ Local dSigmaInt = (64 * pi^2 * s)^-1 * pfInOutRatio * MsqInt;
 .sort
 
 Bracket s, alpha, gweak, pi, pfInOutRatio;
-
+.sort
 * Save
 Format C;
 #write <ee_incl_mumu_QED.txt> "%e;", dSigmaQED;

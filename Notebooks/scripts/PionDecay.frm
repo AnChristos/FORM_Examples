@@ -38,6 +38,7 @@ id pRest = (mpi^2 - ml^2);
 
 
 bracket mpi;
+.sort
 * Save to file 
 Format C;
 #write <PionDecay.txt> "%e;", dGamma;
