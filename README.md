@@ -1,4 +1,21 @@
-# FORM Textbook Examples
+# Simple Feynman Diagram Calculation Examples
+
+A collection of simple textbook-based examples.
+
+The trace formalism is widely used when teaching courses in particle physics.  
+At the same time, like many formalisms, it can become tedious, especially 
+when dealing with longer expressions or multiple diagrams.
+
+This project provides a simple workflow that integrates Jupyter notebooks and Python for further processing.  
+The algebraic manipulations are handled using **FORM**. FORM is open source and 
+can be seen as the modern successor to Schoonschip, one of the earliest programs 
+designed for high-energy physics calculations.
+
+## Textbooks
+
+- *Quarks & Leptons: An Introductory Course to Modern Particle Physics* — Halzen & Martin  
+- *Diagrammatica: The Path to Feynman Diagrams* — Martinus Veltman  
+
 
 ## About FORM
 
@@ -7,20 +24,6 @@
 - Repository: https://github.com/form-dev/form  
 - Releases: https://github.com/form-dev/form/releases  
 - Manual: https://form-dev.github.io/form-docs/stable/manual/  
-
----
-
-## This Project
-
-A collection of simple textbook-based examples implemented in **FORM**, with 
-a workflow that integrates Jupyter notebooks and Python for further processing.
-
----
-
-## Textbooks
-
-- *Quarks & Leptons: An Introductory Course to Modern Particle Physics* — Halzen & Martin  
-- *Diagrammatica: The Path to Feynman Diagrams* — Martinus Veltman  
 
 ---
 
