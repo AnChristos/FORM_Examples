@@ -17,7 +17,7 @@ Vector pPion;
 Local M =  UB(i1, p3, ml) * (g(i1, i2) - g(i1, i2, k5)) * g(i2, i3, mu1) * V(i3, p4, 0)  * pPion(mu1);
 
 #call squareamplitude(M, Msq)
-multiply -1;
+multiply -1; * This is due to conventions
 .sort
 
 * --- Kinematics ---
