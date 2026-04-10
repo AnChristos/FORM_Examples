@@ -68,16 +68,12 @@ See also `Notebooks/Traces.ipynb`.
 
 | Term                       | FORM Notation                  | Mathematical Equivalent                          |
 | :------------------------- | :----------------------------- | :----------------------------------------------- |
-| **Identity Matrix**        | `g(i1, i2)`                    | $\delta_{ab}$                                    |
 | **Gamma Matrix**           | `g(i1, i2, mu)`                | $(\gamma^\mu)_{ab}$                              |
 | **Slash Momentum**         | `g(i1, i2, p1)`                | $(\not{p})_{ab}$                                 |
 | **Gamma 5 ($\gamma^5$)**   | `g(i1, i2, k5)`                | $(\gamma^5)_{ab}$                                |
-| **Left-Handed Projector**  | `g(i1, i2) - g(i1, i2, k5)`    | $\left(\frac{1 - \gamma^5}{2}\right)_{ab}$       |
-| **Right-Handed Projector** | `g(i1, i2) + g(i1, i2, k5)`    | $\left(\frac{1 + \gamma^5}{2}\right)_{ab}$       |
+| **Left-Handed Projector**  | `1/2 *g(i1, i2, k7)`           | $\left(\frac{1 - \gamma^5}{2}\right)_{ab}$       |
+| **Right-Handed Projector** | `1/2 * g(i1, i2, k6)`          | $\left(\frac{1 + \gamma^5}{2}\right)_{ab}$       |
 | **Closed Trace**           | `g(i1, i1, p1, ...)`           | $\mathrm{Tr}(\not{p} \dots)$                     |
-
-- **Chirality**: Indices `k5`, `k6`, and `k7` are reserved for special gamma structures  
-- `k5` represents $\gamma^5$ and acquires a minus sign under conjugation  
 
 ---
 

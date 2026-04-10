@@ -98,14 +98,8 @@ id  Wprop(mu1?,mu2?,q?,m?) = (-d_(mu1,mu2) + q(mu1)*q(mu2)/(m^2)) * prop(q.q - m
 *
 repeat;
 * Handle:
-* 1. g(i1,i2,?a)*g(i2,i3,?b) -> g(i1,i3,?a,?b)
-* 2. g(i1,i2)*g(i2,i3,?a)    -> g(i1,i3,?a)
-* 3. g(i1,i2)*g(i2,i3)       -> g(i1,i3)
+* g(i1,i2,?a)*g(i2,i3,?b) -> g(i1,i3,?a,?b)
     id g(i1?,i2?,?a) * g(i2?,i3?,?b) = g(i1,i3,?a,?b);
-
-* Handle  Unit with both indices matching gamma
-    id g(i1?,i2?) * g(i1?,i2?,?a) = g(i1,i1,?a);
-    id g(i1?,i2?) * g(i2?,i1?,?a) = g(i1,i1,?a);
 endrepeat;
 
 .sort:amplitude-3;

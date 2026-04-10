@@ -14,7 +14,7 @@ Vector pPion;
 
 * I will ommit constants as we want to take a ratio.
 * This should be multiplied by a constant which I ommit
-Local M =  UB(i1, p3, ml) * (g(i1, i2) - g(i1, i2, k5)) * g(i2, i3, mu1) * V(i3, p4, 0)  * pPion(mu1);
+Local M =  UB(i1, p3, ml) *  g(i1, i2, k7) * g(i2, i3, mu1) * V(i3, p4, 0)  * pPion(mu1);
 
 #call squareamplitude(M, Msq)
 .sort
