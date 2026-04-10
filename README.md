@@ -16,6 +16,8 @@ of the earliest programs designed for high-energy physics calculations.
 - *Quarks & Leptons: An Introductory Course to Modern Particle Physics* — Halzen & Martin  
 - *Diagrammatica: The Path to Feynman Diagrams* — Martinus Veltman  
 
+---
+
 ## About FORM
 
 - **FORM**: J.A.M. Vermaseren, *"New features of FORM"* (math-ph/0010025)
@@ -67,59 +69,65 @@ of the earliest programs designed for high-energy physics calculations.
 | Term                       | FORM Notation                    | Mathematical Equivalent                          |
 | :------------------------- | :------------------------------- | :----------------------------------------------- |
 | **Gamma Matrix**           | `g(i1, i2, mu)`                  | $(\gamma^\mu)_{ab}$                              |
-| **Slash Momentum**         | `g(i1, i2, p1)`                  | $(\not{p})_{ab}$                                 |
+| **Slash Momentum**         | `g(i1, i2, p_i)`                 | $(\not{p_i})_{ab}$                               |
 | **Gamma 5 ($\gamma^5$)**   | `g(i1, i2, k5)`                  | $(\gamma^5)_{ab}$                                |
 | **Left-Handed Projector**  | `1/2 *g(i1, i2, k7)`             | $\left(\frac{1 - \gamma^5}{2}\right)_{ab}$       |
 | **Right-Handed Projector** | `1/2 * g(i1, i2, k6)`            | $\left(\frac{1 + \gamma^5}{2}\right)_{ab}$       |
-| **V−A Coupling**           | `1/2 * ((cv+ca)*g(i1,i2,k7) + (cv-ca)*g(i1,i2,k6))`| $(c_V - c_A \gamma^5)_{ab}$ |
+| **V−A Coupling**           | `1/2 * ((cv+ca)*g(i1,i2,k7) + (cv-ca)*g(i1,i2,k6))` | $(c_V - c_A \gamma^5)_{ab}$   |
 
 ---
 
-### Spinors and External Lines
+### External Lines
 
-Spinor convention:
-```
-Spinor(index, momentum, mass)
-```
-
-- **Outgoing fermion ($\bar{u}$)**: `UB(i1, p, m)` → $\bar{u}_a(p, m)$  
-- **Incoming fermion ($u$)**: `U(i1, p, m)` → $u_a(p, m)$  
-- **Outgoing anti-fermion ($v$)**: `V(i1, p, m)` → $v_a(p, m)$  
-- **Incoming anti-fermion ($\bar{v}$)**: `VB(i1, p, m)` → $\bar{v}_a(p, m)$  
-- **Vector polarization ($\epsilon$)**: `eps(mu1, p)` → $\epsilon_\mu(p)$  
+- **Outgoing fermion ($\bar{u}$)**: `UB(i1, p1, m)` → $\bar{u}_a(p_1, m)$  
+- **Incoming fermion ($u$)**: `U(i1, p1, m)` → $u_a(p_1, m)$  
+- **Outgoing anti-fermion ($v$)**: `V(i1, p1, m)` → $v_a(p_1, m)$  
+- **Incoming anti-fermion ($\bar{v}$)**: `VB(i1, p1, m)` → $\bar{v}_a(p_1, m)$  
+- **Massless Vector polarization ($\epsilon$)**: `eps(mu1, p1)` → $\epsilon_\mu(p_1)$  
+- **Massive Vector polarization ($\epsilon$)**: `epsM(mu1, p1 , m)` → $\epsilon_\mu(p_1, m)$  
 
 ---
 
-### Propagator Conventions
-
-Propagators include both numerator structure and scalar denominator factors.
-
-#### Fermion propagator
+### Polarization sums
 ```
-fprop(i1, i2, p, m) = (g(i1, i2, p) + g(i1, i2)*m) * prop(p.p - m^2)
-```
-
-#### Photon propagator
-```
-phprop(mu1, mu2, q) = -d_(mu1, mu2) * prop(q.q)
-```
-
-#### W/Z propagator
-```
-Zprop(mu1, mu2, q, m) = (-d_(mu1, mu2) + q(mu1)*q(mu2)/(m^2)) * prop(q.q - m^2)
+U(i1?,p?,m?) * UB(i2?,p?,m?) =  g(i1,i2,p) + g(i1,i2)*m;
 ```
 
 ```
-Wprop(mu1, mu2, q, m) = (-d_(mu1, mu2) + q(mu1)*q(mu2)/(m^2)) * prop(q.q - m^2)
+V(i1?,p?,m?) * VB(i2?,p?,m?) =  g(i1,i2,p) - g(i1,i2)*m;
 ```
 
-- The `prop` function is kept symbolic in intermediate expressions  
-- It must be resolved using kinematics and momentum conservation  
+```
+ eps(mu1?,p?) * eps(mu2?,p?) = -d_(mu1,mu2);
+```
 
----
+```
+epsM(mu1?, p?, m?) * epsM(mu2?, p?, m?) = -d_(mu1,mu2) + p(mu1)*p(mu2)/(m^2);
 
-### Example: $e e \to \mu \mu$ (including Z)
+```
+### Propagators
 
+```
+fprop(i1?,i2?,p?,m?) = (g(i1,i2,p) +  g(i1,i2)*m)  * prop(p.p - m^2)
+```
+
+```
+phprop(mu1?,mu2?,q?) = -d_(mu1,mu2) * prop(q.q);
+```
+
+```
+Zprop(mu1?,mu2?,q?,m?) = (-d_(mu1,mu2) + q(mu1) * q(mu2)/(m^2)) * prop(q.q - m^2);
+```
+
+```
+Wprop(mu1?,mu2?,q?,m?) = (-d_(mu1,mu2) + q(mu1) * q(mu2)/(m^2)) * prop(q.q - m^2);
+```
+
+
+The `prop` function is kept symbolic in intermediate expressions  
+It must be resolved using kinematics and momentum conservation  
+
+For example:
 ```
 * Momentum conservation
 id q = p1 + p2;
@@ -134,9 +142,8 @@ id (-mZ^2 + q.q)^-1 = (s - mZ^2)^-1;
 .sort
 ```
 
----
 
-## Index and Momentum Mapping
+### Index and Momentum Mapping
 
 To translate a handwritten Feynman rule:
 
@@ -144,9 +151,8 @@ To translate a handwritten Feynman rule:
 2. **Spinor indices**: `i1, i2, i3, ...` (up to `i40`)  
 3. **Lorentz indices**: `mu1, mu2, mu3, ...` (up to `mu20`)  
 
----
 
-## Squared Amplitudes
+### Squared Amplitudes
 
 After defining the amplitude:
 
@@ -154,9 +160,27 @@ After defining the amplitude:
 squareamplitude(Amp, Mat)
 ```
 
+### Kinematics 
+
+All calculations are performed using 
+\[
+g^{\mu\nu} = \mathrm{diag}(1,-1,-1,-1)
+\]
+
+- **On-shell condition**
+  \[
+  p^2 = m^2
+  \]
+
+- **Mandelstam variables**
+  \[
+  s = (p_1 + p_2)^2
+  \]
+  \[
+  t = (p_1 - p_3)^2
+  \]
+  \[
+  u = (p_1 - p_4)^2
+  \]
+
 ---
-
-## Notes
-
-- The workflow is designed for symbolic manipulation first, numerical evaluation later  
-- Expressions are exported in a file using C format and then parsed from Python  
