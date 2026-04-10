@@ -168,11 +168,11 @@ All calculations are performed using the Minkowski metric
 
 $g^{\mu\nu} = \mathrm{diag}(1, -1, -1, -1)$
 
-- **On-shell condition:** 
+**On-shell condition:** 
 
 $p_i^2 = m_i^2$
 
-- **Mandelstam variables:**  
+**Mandelstam variables:**  
   
   $s = (p_1 + p_2)^2$,  
   
