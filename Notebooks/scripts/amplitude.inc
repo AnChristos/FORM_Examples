@@ -13,7 +13,7 @@ AutoDeclare Index i,mu,k;
 AutoDeclare Symbol m,x;
 AutoDeclare Vector p,q;
 Vector q,q1,q2,p1,...,p10;
-CF  UB,U,VB,V,g,eps;
+CF  UB,U,VB,V,g,eps,epsM;
 CF  fprop,phprop,Zprop,Wprop,prop;
 Index k5=0, k6=0, k7=0;
 *
@@ -85,6 +85,7 @@ L   `Mat' = `Amp'*`Amp'C;
 id  U(i1?,p?,m?)*UB(i2?,p?,m?) =  g(i1,i2,p)+g(i1,i2)*m;
 id  V(i1?,p?,m?)*VB(i2?,p?,m?) = -g(i1,i2,p)+g(i1,i2)*m;
 id  eps(mu1?,p?)*eps(mu2?,p?) = -d_(mu1,mu2);
+id  epsM(mu1?, p?, m?)*epsM(mu2?, p?, m?) = -d_(mu1,mu2) + p(mu1)*p(mu2)/(m^2);
 *
 *   Propagators
 *

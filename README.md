@@ -1,45 +1,70 @@
-# About FORM 
+# FORM Textbook Examples
 
-* **FORM**: J.A.M. Vermaseren, *"New features of FORM"* (math-ph/0010025)
+## About FORM
 
-- Repository https://github.com/form-dev/form
-- Releases https://github.com/form-dev/form/releases
-- Manual https://form-dev.github.io/form-docs/stable/manual/
+- **FORM**: J.A.M. Vermaseren, *"New features of FORM"* (math-ph/0010025)
 
-#  This project
+- Repository: https://github.com/form-dev/form  
+- Releases: https://github.com/form-dev/form/releases  
+- Manual: https://form-dev.github.io/form-docs/stable/manual/  
 
-Simple textbook examples 
+---
+
+## This Project
+
+A collection of simple textbook-based examples implemented in **FORM**, with 
+a workflow that integrates Jupyter notebooks and Python for further processing.
+
+---
 
 ## Textbooks
-* *Quarks & Leptons: An Introductory Course to Modern Particle Physics* by Halzen & Martin
-* *Diagrammatica: The Path to Feynman Diagrams* by Martinus Veltman
+
+- *Quarks & Leptons: An Introductory Course to Modern Particle Physics* — Halzen & Martin  
+- *Diagrammatica: The Path to Feynman Diagrams* — Martinus Veltman  
+
+---
 
 ## Structure
-- `/Notebooks`: Interactive Jupyter environments.
-- `/scripts`: Raw FORM 5.0 files generated from notebooks.
+
+- `/Notebooks` — Interactive Jupyter environments  
+- `/scripts` — Raw FORM 5.0 files generated from notebooks  
+
+---
 
 ## Requirements
-- We assume form is available (a command ``form'' exists)
-- Python
-    - jupyterlab
-    - numpy
-    - matplotlib 
 
-## Description of pipeline
-- We want to be able to run ``form``. Ideally from inside the notebook.
-- Assume a notebook ``name.ipynb``
-    - We import the utils in the first cell
-    - At the start of second cell  we use ``%%pyForm name``.
-    We then put the actual ``form`` code in the cell
-    - When the cells runs we save and run``name.frm`` in the scripts folder.
-    - We store the expressions using Format C in a file.
-    - We then use python to parse the file and do further manipulations.
+- **FORM** installed (command `form` must be available)  
+- Python  
+  - jupyterlab  
+  - numpy  
+  - matplotlib  
 
-# Conventions for Amplitude Calculations
+---
 
-## Gamma Matrix and Identity Notation
+## Pipeline Overview
 
-See also Traces.ipynb 
+- We aim to run `form` directly from within Jupyter notebooks  
+- Assume a notebook `name.ipynb`:
+
+  1. Import utilities in the first cell  
+  2. Start the second cell with:
+     ```python
+     %%pyForm name
+     ```
+  3. Write the FORM code in that cell  
+  4. On execution:
+     - A file `scripts/name.frm` is generated  
+     - The FORM script is executed  
+     - Output is written using **Format C**  
+  5. Python then parses the output file for further manipulation  
+
+---
+
+## Conventions for Amplitude Calculations
+
+### Gamma Matrix and Identity Notation
+
+See also `Notebooks/Traces.ipynb`.
 
 | Term                     | FORM Notation        | Mathematical Equivalent    |
 | :----------------------- | :------------------- | :------------------------- |
@@ -47,42 +72,70 @@ See also Traces.ipynb
 | **Gamma Matrix**         | `g(i1, i2, mu)`      | $(\gamma^\mu)_{ab}$        |
 | **Slash Momentum**       | `g(i1, i2, p1)`      | $(\not{p})_{ab}$           |
 | **Gamma 5 ($\gamma^5$)** | `g(i1, i2, k5)`      | $(\gamma^5)_{ab}$          |
-| **Closed Trace**         | `g(i1, i1, p1, ...)` | $\text{Tr}(\not{p} \dots)$ |
+| **Closed Trace**         | `g(i1, i1, p1, ...)` | $\mathrm{Tr}(\not{p} \dots)$ |
 
-* **Chirality**: The indices `k5`, `k6`, and `k7` are reserved for special gamma structures.
-* `k5` specifically represents $\gamma^5$ and receives a minus sign during the conjugation process.
+- **Chirality**: Indices `k5`, `k6`, and `k7` are reserved for special gamma structures  
+- `k5` represents $\gamma^5$ and acquires a minus sign under conjugation  
 
 ---
 
-## Spinors and External Lines
+### Spinors and External Lines
 
-Spinors convention:
+Spinor convention:
 ```
 Spinor(index, momentum, mass)
 ```
 
-* **Adjoint Lepton/Quark ($\bar{u}$)**: `UB(i1, p, m)` → $\bar{u}_a(p, m)$
-* **Lepton/Quark ($u$)**: `U(i1, p, m)` → $u_a(p, m)$
-* **Anti-Lepton ($v$)**: `V(i1, p, m)` → $v_a(p, m)$
-* **Adjoint Anti-Lepton ($\bar{v}$)**: `VB(i1, p, m)` → $\bar{v}_a(p, m)$
-* **Vector Polarization ($\epsilon$)**: `eps(mu1, p)` → $\epsilon_\mu(p)$
+- **Outgoing fermion ($\bar{u}$)**: `UB(i1, p, m)` → $\bar{u}_a(p, m)$  
+- **Incoming fermion ($u$)**: `U(i1, p, m)` → $u_a(p, m)$  
+- **Outgoing anti-fermion ($v$)**: `V(i1, p, m)` → $v_a(p, m)$  
+- **Incoming anti-fermion ($\bar{v}$)**: `VB(i1, p, m)` → $\bar{v}_a(p, m)$  
+- **Vector polarization ($\epsilon$)**: `eps(mu1, p)` → $\epsilon_\mu(p)$  
 
 ---
 
-## Propagator Conventions
+### Propagator Conventions
 
-Propagators include both the numerator structure and the scalar denominator factor.
+Propagators include both numerator structure and scalar denominator factors.
 
-### Fermion Propagator
-
+#### Fermion propagator
 ```
-fprop(i1, i2, p, m) = (g(i1, i2, p) + g(i1, i2) * m) * prop(p.p - m^2)
+fprop(i1, i2, p, m) = (g(i1, i2, p) + g(i1, i2)*m) * prop(p.p - m^2)
 ```
 
-### Photon Propagator
-
+#### Photon propagator
 ```
 phprop(mu1, mu2, q) = -d_(mu1, mu2) * prop(q.q)
+```
+
+#### W/Z propagator
+```
+Zprop(mu1, mu2, q, m) = (-d_(mu1, mu2) + q(mu1)*q(mu2)/(m^2)) * prop(q.q - m^2)
+```
+
+```
+Wprop(mu1, mu2, q, m) = (-d_(mu1, mu2) + q(mu1)*q(mu2)/(m^2)) * prop(q.q - m^2)
+```
+
+- The `prop` function is kept symbolic in intermediate expressions  
+- It must be resolved using kinematics and momentum conservation  
+
+---
+
+### Example: $e e \to \mu \mu$ (including Z)
+
+```
+* Momentum conservation
+id q = p1 + p2;
+.sort
+
+* Propagator handling
+id prop(x?) = (x)^-1;
+.sort
+
+id (q.q)^-1 = (s)^-1;
+id (-mZ^2 + q.q)^-1 = (s - mZ^2)^-1;
+.sort
 ```
 
 ---
@@ -91,12 +144,23 @@ phprop(mu1, mu2, q) = -d_(mu1, mu2) * prop(q.q)
 
 To translate a handwritten Feynman rule:
 
-1. **Index Direction**: Write indices in the direction of fermion flow (matrix multiplication order).
-2. **Spinor Indices**: Use `i1, i2, i3...` for fermion lines (up to `i40`).
-3. **Lorentz Indices**: Use `mu1, mu2, mu3...` for vector indices (up to `mu20`).
+1. **Index direction**: Follow fermion flow (matrix multiplication order)  
+2. **Spinor indices**: `i1, i2, i3, ...` (up to `i40`)  
+3. **Lorentz indices**: `mu1, mu2, mu3, ...` (up to `mu20`)  
 
+---
 
-Then call
-   ```
-   squareamplitude(Amp, Mat)
-   ```
+## Squared Amplitudes
+
+After defining the amplitude:
+
+```
+squareamplitude(Amp, Mat)
+```
+
+---
+
+## Notes
+
+- The workflow is designed for symbolic manipulation first, numerical evaluation later  
+- Expressions are exported in a file using C format and then parsed from Python  
