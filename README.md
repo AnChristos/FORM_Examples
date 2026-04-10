@@ -64,8 +64,8 @@ of the earliest programs designed for high-energy physics calculations.
 
 ### Gamma Matrix Notation
 
-| Term                       | FORM Notation                  | Mathematical Equivalent                          |
-| :------------------------- | :-------------------------------:wq | :----------------------------------------------- |
+| Term                       | FORM Notation                    | Mathematical Equivalent                          |
+| :------------------------- | :------------------------------- | :----------------------------------------------- |
 | **Gamma Matrix**           | `g(i1, i2, mu)`                  | $(\gamma^\mu)_{ab}$                              |
 | **Slash Momentum**         | `g(i1, i2, p1)`                  | $(\not{p})_{ab}$                                 |
 | **Gamma 5 ($\gamma^5$)**   | `g(i1, i2, k5)`                  | $(\gamma^5)_{ab}$                                |
