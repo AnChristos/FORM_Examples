@@ -71,7 +71,7 @@ of the earliest programs designed for high-energy physics calculations.
 | **Gamma 5 ($\gamma^5$)**   | `g(i1, i2, k5)`                  | $(\gamma^5)_{ab}$                                |
 | **Left-Handed Projector**  | `1/2 *g(i1, i2, k7)`             | $\left(\frac{1 - \gamma^5}{2}\right)_{ab}$       |
 | **Right-Handed Projector** | `1/2 * g(i1, i2, k6)`            | $\left(\frac{1 + \gamma^5}{2}\right)_{ab}$       |
-| **V−A Coupling**           | `1/2 * ((cv+ca)*g(i1,i2,k7) + (cv-ca)*g(i1,i2,k6))`|  | $(c_V - c_A \gamma^5)_{ab}$ |
+| **V−A Coupling**           | `1/2 * ((cv+ca)*g(i1,i2,k7) + (cv-ca)*g(i1,i2,k6))`| $(c_V - c_A \gamma^5)_{ab}$ |
 
 ---
 
