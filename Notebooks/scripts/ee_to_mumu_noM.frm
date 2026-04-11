@@ -68,7 +68,6 @@ Format C;
 .sort
 * Print
 Format;
-factorize;
 Print Msq;
 Print dSigma;
 .end

@@ -38,6 +38,7 @@ multiply 1/4;
 
 * Physics & Normalization
 id e^4 = 16 * pi^2 * alpha^2;
+id e^2 = 4 * pi * alpha;
 
 
 * Conservation
