@@ -39,7 +39,6 @@ multiply 1/4;
 * coupling
 id e^4 = 16 * pi^2 * alpha^2;
 id e^2 = 4 * pi * alpha;
-id e^4 = 16 * pi^2 * alpha^2;
 * propagator handling
 id q = p1 + p2;
 id prop(x?) = (x)^-1;

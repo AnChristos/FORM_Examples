@@ -43,6 +43,22 @@ def XS_2To2_CM(Msq, s, t, u, theta, m1, m2, m3, m4):
     return sp.simplify(ps_factor * Msq)
 
 
+def dGamma_dOmega(Msq, M, m2, m3):
+    """
+    Converts a Matrix Element (Msq) into
+    a differential decay rate dSigma/dOmega
+    in the Center-of-Mass frame.
+    Parameters:
+    Msq    : SymPy expression
+    M  : SumPy symbol for decaying particle
+    m2, m3 : SumPy symbols  Masses of products
+    """
+    la = M**4 + m2**4 + m3**4 - 2 * (M**2 * m2**2 + m2**2 * m3**2 + m3**2 * M**2)
+    pf_mag = sp.sqrt(la) / (2 * M)
+    dps_factor = pf_mag / (32 * sp.pi**2 * M**2)
+    return sp.simplify(dps_factor * Msq)
+
+
 def XS_Compton_Lab(Msq, s, t, u, theta, E1, me):
     """
     Specific Lab frame cross-section for Compton (m_photon = 0).
@@ -54,7 +70,7 @@ def XS_Compton_Lab(Msq, s, t, u, theta, E1, me):
     t_phys = -2 * E1 * E3 * (1 - sp.cos(theta))
     u_phys = me**2 - 2 * me * E3
 
-    ps_factor = (1 / (64 * sp.pi**2 * me**2)) * (E3 / E1)**2
+    ps_factor = (1 / (64 * sp.pi**2 * me**2)) * (E3 / E1) ** 2
     Msq_sub = Msq.subs({s: s_phys, t: t_phys, u: u_phys})
-    
+
     return sp.simplify(ps_factor * Msq_sub)
