@@ -25,8 +25,6 @@ id pPion.p3 = (mpi^2 + ml^2)/2;
 id pPion.p4 = (mpi^2 - ml^2)/2;
 .sort
 
-bracket mpi;
-.sort
 * Save to file 
 Format C;
 #write <PionDecay.txt> "%e;", Msq;
@@ -34,6 +32,6 @@ Format C;
 * Print 
 Format;
 Print Msq;
-.end
+
 
 .end
