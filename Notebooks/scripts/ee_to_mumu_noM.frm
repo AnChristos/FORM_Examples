@@ -5,7 +5,7 @@
 Off Statistics;
 Off FinalStats;
 
-#include amplitude.h
+#include SquareAmplitude.h
 
 * Kinematic variables
 Symbols s, t, u;
