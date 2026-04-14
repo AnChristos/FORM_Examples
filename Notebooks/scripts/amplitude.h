@@ -1,10 +1,6 @@
 *-------------------------------------------------------------------------*
 * amplitude.h
-*
-* Core Procedure: squareamplitude 
-* Description:
-* FORM procedure for squaring Feynman amplitudes, 
-* performing spin sums, and evaluating Dirac traces.
+* 
 * 
 * Original from: Jos Vermaseren
 * J.A.M.Vermaseren "New features of FORM" math-ph/0010025
@@ -20,9 +16,10 @@ CF  UB,U,VB,V,g,eps,epsM;
 CF  fprop,phprop,Zprop,Wprop,prop;
 Index k5=0, k6=0, k7=0;
 
-
-
-*
+*--------------------------------------------------------
+* Procedure: squareamplitude 
+* Description: Calculate Feynman amplitudes squared. 
+* ------------------------------------------------------
 *
 #procedure squareamplitude(Amp,Mat)
 .sort
@@ -86,8 +83,10 @@ NSkip `Mat';
 #endprocedure
 
 
-*
-*
+*--------------------------------------------------------
+* Procedure: conjugate 
+* Description Forming the conjugate 
+* ------------------------------------------------------
 #procedure conjugate(Amp, AmpC, imax, mumax)
 * Create the conjugate expression
 *
@@ -121,13 +120,17 @@ id  g(?a,k5) = -g(?a,k5);
 .sort
 #endprocedure 
 
-*
+*--------------------------------------------------------
+* Procedure: doTrace 
+* Description Glues gamma chains and executes Dirac traces
+* ------------------------------------------------------
 *
 #procedure doTrace(Mat)
 
 *
 *   String the gamma matrices together in traces.
 *
+
 repeat;
     id g(i1?,i2?,?a) * g(i2?,i3?,?b) = g(i1,i3,?a,?b);
 endrepeat; 
