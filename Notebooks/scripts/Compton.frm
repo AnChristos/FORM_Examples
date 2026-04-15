@@ -42,6 +42,9 @@ id (-me^2 + q2.q2)^-1 = (u - me^2)^-1;
 * Kinematics 
 #call Mandelstam2To2(p1,p2,p3,p4,me,0,me,0)
 
+* Final clean up
+id u = 2*me^2 - s - t;
+
 Bracket s, alpha, pi ;
 * Save
 Format C;

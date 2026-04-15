@@ -59,27 +59,40 @@ def dGamma_dOmega(Msq, M, m2, m3):
     return sp.simplify(dps_factor * Msq)
 
 
-def XS_Compton_Lab(Msq, s, t, u, theta, E1, me):
+def XS_FixedTarget_Lab(Msq, s, t, u, theta, E1, M, m=0):
     """
-    Specific Lab frame cross-section for Compton (m_photon = 0).
-    E1 : Incoming photon energy (scalar or symbol)
-    me : Electron mass (scalar or symbol)
+    Lab frame cross-section for a light 
+    projectile (mass m) 
+    hitting a stationary target (mass M).  
+    Parameters:
+    Msq    : SymPy expression (contains s, t, u)
+    s,t,u  : SymPy symbols
+    theta  : SymPy symbol (scattering angle)
+    E1     : Incoming projectile energy
+    M      : Target mass (e.g., me for Compton, Mproton for Rutherford)
+    m      : Projectile mass (default 0 for photons or ultra-relativistic e-)
     """
     E3 = sp.Symbol("E3", positive=True)
-
-    # Lab frame Mandelstam
-    s_phys = me**2 + 2 * me * E1
-    t_phys = -2 * me * (E1 - E3)
-    u_phys = 2 * me**2 - s_phys - t_phys
-
-    # Phase Space Lab Frame
-    ps_factor_const = 1 / (64 * sp.pi**2 * me**2)
-    # Intermediate Simplification
+    ct = sp.Symbol("ct")  # Dummy for cos(theta)
+    
+    s_phys = m**2 + M**2 + 2 * M * E1
+    
+    p1_mag = sp.sqrt(E1**2 - m**2)
+    p3_mag = sp.sqrt(E3**2 - m**2)
+    
+   
+    t_phys = 2 * m**2 - 2 * (E1 * E3 - p1_mag * p3_mag * ct)
+    u_phys = 2 * m**2 + 2 * M**2 - s_phys - t_phys 
     Msq_sub = Msq.subs({s: s_phys, t: t_phys, u: u_phys})
+    
+    ps_factor_const = 1 / (64 * sp.pi**2 * M**2)
     core = sp.simplify(Msq_sub * ps_factor_const)
+  
     intermediate = core * (E3 / E1) ** 2
+    E3_phys = (E1 + m**2 / M) / (1 + (E1 / M) * (1 - ct))
+  
+    final_ct = sp.simplify(intermediate.subs(E3, E3_phys))
+  
+    return final_ct.subs(ct, sp.cos(theta))
+  
 
-    E3_phys = E1 / (1 + (E1 / me) * (1 - sp.cos(theta)))
-    result = sp.simplify(intermediate.subs(E3, E3_phys))
-
-    return result
