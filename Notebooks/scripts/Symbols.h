@@ -11,29 +11,32 @@
 * Symbols.h - Clean Explicit Version
 *-------------------------------------------------------------------------*
 
-* --- Preprocessor Limits ---
+* --- Symbol Limits ---
 #ifndef `MAXLIMITS'
     #define MAXLIMITS "1"
-    #define IMAXIND "40"
-    #define MUMAXIND "20"
-    #define MAXVEC "10"
+    
+* Limits for a single amplitude
+    #define IMAX "40"        
+    #define MUMAX "20"
+    
+* Buffer for squaring (2x the base)
+    #define IMAX2 "80"       
+    #define MUMAX2 "40"
+    
+* Limits on lines and independent 4-momenta
+    #define MAXTRACE "10"    
+    #define MAXVEC "10"      
 #endif
 
-* --- Indices ---
-* Lorentz indices (mu1, mu2, ...)
-Index mu, mu1, ..., mu`MUMAXIND';
-* Spinor/Trace indices (i1, i2, ...)
-Index i, i1, ..., i`IMAXIND';
-* Gamma-5/6/7 structure indices
-Index k5=0, k6=0, k7=0;
-Index k;
-* --- 4- vectors ---
+* --- Explicit Declarations ---
+Index mu1, ..., mu`MUMAX2';
+Index i1, ..., i`IMAX2';
+Index mu, i, k, k5=0, k6=0, k7=0;
+
 Vector p, p1, ..., p`MAXVEC';
 Vector q, q1, q2, q3;
-* --- Symbols ---
+
 Symbols m, s, t, u, cv, ca;
-* --- Functions ---
-CF UB, U, VB, V, g;
-CF eps, epsM, fprop, phprop, Zprop, Wprop, prop, Fermiprop;
+CF UB, U, VB, V, g, eps, epsM, fprop, phprop, Zprop, Wprop, prop, Fermiprop;
 
 #endif

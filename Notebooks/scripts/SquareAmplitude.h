@@ -19,7 +19,7 @@
 Skip;
 NSkip `Amp';
 #$imax = 0;
-#do i = 1,40
+#do i = 1,`IMAX'
     if ( match(VB(i`i',?a)) || match(V(i`i',?a))
          || match(UB(i`i',?a)) || match(U(i`i',?a))
          || match(g(i`i',?a)) || match(g(i?,i`i',?a))
@@ -28,7 +28,7 @@ NSkip `Amp';
     endif;
 #enddo
 #$mumax = 0;
-#do mu = 1,20
+#do mu = 1,`MUMAX'
     if ( match(g(?a,mu`mu')) 
          || match(phprop(mu`mu',?a)) || match(phprop(mu?,mu`mu',?a)) 
          || match(Zprop(mu`mu',?a)) || match(Zprop(mu?,mu`mu',?a))
@@ -36,13 +36,13 @@ NSkip `Amp';
         $mumax = `mu';
     endif;
 #enddo
-.sort:amplitude-1;
+.sort:amplitude-counter;
 *
 *   Now construct the conjugate
 *
 Skip;
 #call conjugate(`Amp',`Amp'C, `$imax', `$mumax');
-.sort:amplitude-2;
+.sort:amplitude-conjugate;
 *
 *   Now multiply Amp and AmpC to get the matrix element squared.
 *

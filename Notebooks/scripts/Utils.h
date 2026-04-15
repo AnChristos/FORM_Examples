@@ -27,7 +27,7 @@ endrepeat;
 *
 *   Now put the traces one by one in terms of the built in gammas
 *
-#do i = 1,10
+#do i = 1, `MAXTRACE'
     id,once,g(i1?,i1?,?a) = g_(`i',?a);
     id  g_(`i',k7) = g7_(`i');
     al  g_(`i',k6) = g6_(`i');
@@ -37,7 +37,7 @@ endrepeat;
 *
 *   Finally take the traces
 *
-#do i = 1,10
+#do i = 1,`MAXTRACE'
 Trace4,`i';
 #enddo
 
