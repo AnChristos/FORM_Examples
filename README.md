@@ -28,8 +28,9 @@ of the earliest programs designed for high-energy physics calculations.
 ---
 
 ## Structure
-- `/Notebooks` — Interactive Jupyter environments  that run FORM
-- `Notebooks/scripts` — Raw FORM files (generated from notebooks)  
+
+- `/Notebooks` — Interactive Jupyter Notebook environments that run FORM  
+- `/Notebooks/scripts` — `.h` files containing FORM code, along with `.frm` and `.txt` files generated from the notebooks  
 
 ---
 
@@ -58,7 +59,7 @@ of the earliest programs designed for high-energy physics calculations.
   4. On execution:
      - A file `scripts/name.frm` is generated  
      - The FORM script is executed  
-     - Output is written using **Format C**  
+     - Output is written using Format C in `.txt` files.  
   5. Python then parses the output file for further manipulation  
 
 ---
