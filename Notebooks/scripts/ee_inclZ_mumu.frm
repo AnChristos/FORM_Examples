@@ -51,24 +51,6 @@ endrepeat;
 #call Mandelstam2To2(p1,p2,p3,p4,0,0,0,0)
 
 
-* Mandelstam
-repeat;
-* Massless limit
-    id p1.p1 = 0;
-    id p2.p2 = 0;
-    id p3.p3 = 0;
-    id p4.p4 = 0;
-
-    id p1.p2 = s/2;
-    id p3.p4 = s/2;
-    id p1.p3 = - t/2;
-    id p2.p4 = - t/2;
-    id p1.p4 = u/2;
-    id p2.p3 = u/2;    
-endrepeat;
-.sort;
-
-
 Bracket s, alpha, gweak;
 .sort
 * Save
