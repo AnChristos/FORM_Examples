@@ -13,7 +13,7 @@ AutoDeclare Symbol m, x;
 AutoDeclare Vector p, q;
 Vector q1, q2, q3, p1, ..., p10;
 CF UB, U, VB, V, g, eps, epsM;
-CF fprop, phprop, Zprop, Wprop, prop;
+CF fprop, phprop, Zprop, Wprop, prop, Fermiprop;
 Index k5=0, k6=0, k7=0;
 Symbols cv,ca, s, t, u;
 
