@@ -1,4 +1,4 @@
-#ifndef `SYMBOLSH_'
+#ifndef `SYMBOLSH'
 #define SYMBOLSH "1"
 *-------------------------------------------------------------------------*
 * Symbols.h
@@ -7,14 +7,33 @@
 * https://www.nikhef.nl/~form/maindir/courses/uam2019/uam2019.html
 *-------------------------------------------------------------------------*
 
-* --- Declarations ---
-AutoDeclare Index mu, i, k;
-AutoDeclare Symbol m, x;
-AutoDeclare Vector p, q;
-Vector q1, q2, q3, p1, ..., p10;
-CF UB, U, VB, V, g, eps, epsM;
-CF fprop, phprop, Zprop, Wprop, prop, Fermiprop;
+*-------------------------------------------------------------------------*
+* Symbols.h - Clean Explicit Version
+*-------------------------------------------------------------------------*
+
+* --- Preprocessor Limits ---
+#ifndef `MAXLIMITS'
+    #define MAXLIMITS "1"
+    #define IMAXIND "40"
+    #define MUMAXIND "20"
+    #define MAXVEC "10"
+#endif
+
+* --- Indices ---
+* Lorentz indices (mu1, mu2, ...)
+Index mu, mu1, ..., mu`MUMAXIND';
+* Spinor/Trace indices (i1, i2, ...)
+Index i, i1, ..., i`IMAXIND';
+* Gamma-5/6/7 structure indices
 Index k5=0, k6=0, k7=0;
-Symbols cv,ca, s, t, u;
+Index k;
+* --- 4- vectors ---
+Vector p, p1, ..., p`MAXVEC';
+Vector q, q1, q2, q3;
+* --- Symbols ---
+Symbols m, s, t, u, cv, ca;
+* --- Functions ---
+CF UB, U, VB, V, g;
+CF eps, epsM, fprop, phprop, Zprop, Wprop, prop, Fermiprop;
 
 #endif

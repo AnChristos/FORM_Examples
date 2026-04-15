@@ -9,6 +9,8 @@ Off FinalStats;
 
 #include Utils.h
 
+Symbols m1,m2;
+
 * The Trace of 2 matrices:
 Local Trace2 = g(i1, i2, mu1) * g(i2, i1, mu2);
 

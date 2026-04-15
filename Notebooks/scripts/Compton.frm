@@ -7,7 +7,7 @@ Off FinalStats;
 #include SquareAmplitude.h
 
 * constants
-Symbols me, e, pi, alpha;
+Symbols me, e, pi, alpha, x;
 
 Local Ms = (e^2) * UB(i1, p3, me) * g(i1, i2, mu2) * eps(mu1, p2) 
                  * fprop(i2, i3, q1, me) 
