@@ -8,7 +8,6 @@ Off FinalStats;
 
 #include SquareAmplitude.h
 
-* Physical constants
 Symbols e, pi, alpha, Mproton, x;
 
 Local M =     (e^2) * (UB(i1, p3, 0) * g(i1, i2, mu1) * U(i2, p1, 0)) 

@@ -15,11 +15,9 @@
 * ------------------------------------------------------
 *
 #procedure doTrace(Mat)
-
 *
 *   String the gamma matrices together in traces.
 *
-
 repeat;
     id g(i1?,i2?,?a) * g(i2?,i3?,?b) = g(i1,i3,?a,?b);
 endrepeat; 
@@ -98,7 +96,7 @@ id  i_ = -i_;
 #enddo
 
 * Exchange rows/columns (Transpose)
-id  g(i1?,i2?,mu?) = g(i2,i1,mu);
+id  g(i1?,i2?,?a) = g(i2,i1,?a);
 id  fprop(i1?,i2?,?a) = fprop(i2,i1,?a);
 id  phprop(mu1?,mu2?,p?) = phprop(mu2,mu1,p);
 id  Zprop(mu1?,mu2?,?a) = Zprop(mu2,mu1,?a);
