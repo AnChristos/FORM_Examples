@@ -36,35 +36,28 @@ Local MInt = MsqTotal - MsqLO - MsqNLO;
 .sort
 
 
-* --- KINEMATIC DEFINITIONS: VACUUM POLARIZATION ---
-* q  = p1 - p3           : Momentum transfer between electron and muon lines
-* t  = q.q               : Mandelstam variable t (photon momentum squared)
-* k  = loop momentum     : Integration variable for the fermion loop
-* kf1 = k                : Momentum of the first fermion in the bubble
-* kf2 = k - q            : Momentum of the second fermion in the bubble (cons. of momentum)
-
-
-
-* --- MASSLESS APPROXIMATION ---
-id Melec = 0;
-id Mmuon = 0;
-#call Mandelstam2To2(p1,p2,p3,p4,0,0,0,0)
-.sort
-Format C;
-#write <RunningBeforeSubst.txt> "%e;", MInt;
-Format;
-Print+s MInt;
-.sort
-
 * Replace the propagator function
 id prop(q.q) = 1/t;
 id prop(-Melec^2 + kf1.kf1) = 1/denom1;
 id prop(-Melec^2 + kf2.kf2) = 1/denom2;
-* Replace dot products involving loop momentum k
-* Apply shift 
-id kf1.p1? = fx*(t/2);;
-id kf2.p2? = (fx-1)*(-t/2);
-id kf1.kf2 = fx*(fx-1)*t;
+.sort
+* kf1 effectively becomes fx * q
+id kf1.p1 = fx * (t/2);
+id kf1.p2 = fx * (-t/2);
+id kf1.p3 = fx * (-t/2);
+id kf1.p4 = fx * (t/2);
+* kf2 effectively becomes (fx - 1) * q
+id kf2.p1 = (fx - 1) * (t/2);
+id kf2.p2 = (fx - 1) * (-t/2);
+id kf2.p3 = (fx - 1) * (-t/2);
+id kf2.p4 = (fx - 1) * (t/2);
+* Internal loop propagator dot product
+id kf1.kf2 = fx * (fx - 1) * t;
+.sort
+id Melec = 0;
+id Mmuon = 0;
+* --- MASSLESS APPROXIMATION ---
+#call Mandelstam2To2(p1,p2,p3,p4,0,0,0,0)
 .sort
 
 * Print 
