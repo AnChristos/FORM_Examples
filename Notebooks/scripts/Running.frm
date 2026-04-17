@@ -9,7 +9,7 @@ Off FinalStats;
 
 Symbols e, Mmuon, Melec;
 Vectors k, kf1, kf2;
-Symbols denom1, denom2, fx;
+Symbols MasterProp, fx;
 
 
 Local MLO = (e^2) * (UB(i1, p3, Melec ) * g(i1, i2, mu1) * U(i2, p1, Melec))
@@ -35,11 +35,15 @@ Drop drop MsqNLO, MsqTotal, MLO, MNLO, MTotal ;
 Local MInt = MsqTotal - MsqLO - MsqNLO;
 .sort
 
-
+* --- KINEMATIC DEFINITIONS: VACUUM POLARIZATION ---
+* q  = p1 - p3           : Momentum transfer between electron and muon lines
+* t  = q.q               : Mandelstam variable t (photon momentum squared)
+* k  = loop momentum     : Integration variable for the fermion loop
+* kf1 = k                : Momentum of the first fermion in the bubble
+* kf2 = k - q            : Momentum of the second fermion in the bubble
 * Replace the propagator function
 id prop(q.q) = 1/t;
-id prop(-Melec^2 + kf1.kf1) = 1/denom1;
-id prop(-Melec^2 + kf2.kf2) = 1/denom2;
+id prop(-Melec^2 + kf1.kf1) * prop(-Melec^2 + kf2.kf2) = MasterProp;
 .sort
 * kf1 effectively becomes fx * q
 id kf1.p1 = fx * (t/2);
@@ -58,6 +62,8 @@ id Melec = 0;
 id Mmuon = 0;
 * --- MASSLESS APPROXIMATION ---
 #call Mandelstam2To2(p1,p2,p3,p4,0,0,0,0)
+.sort
+id u = -s -t;
 .sort
 
 * Print 
