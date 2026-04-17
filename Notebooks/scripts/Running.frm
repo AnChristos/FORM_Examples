@@ -1,5 +1,5 @@
 
-* Process: Renormalization
+* Process: Running
 
 #-
 * Above suppresses extra output
@@ -7,9 +7,9 @@ Off Statistics;
 Off FinalStats;
 #include SquareAmplitude.h
 
-Symbols e, Mmuon, Melec, x;
+Symbols e, Mmuon, Melec;
 Vectors k, kf1, kf2;
-Symbols k2 , kminusq2, kdotp1, kminusqdotp2, kdotkminusq;
+Symbols denom1, denom2, fx;
 
 
 Local MLO = (e^2) * (UB(i1, p3, Melec ) * g(i1, i2, mu1) * U(i2, p1, Melec))
@@ -43,32 +43,38 @@ Local MInt = MsqTotal - MsqLO - MsqNLO;
 * kf1 = k                : Momentum of the first fermion in the bubble
 * kf2 = k - q            : Momentum of the second fermion in the bubble (cons. of momentum)
 
-* Replace the propagator function with algebraic denominators
-id prop(q.q) = 1/t;
-id prop(-Melec^2 + kf1.kf1) = 1/(-Melec^2 +k2);
-id prop(-Melec^2 + kf2.kf2) = 1/(-Melec^2 +kminusq2);
 
-* Replace dot products involving loop momentum k
-id kf1.p1? = kdotp1;
-id kf2.p2? = kminusqdotp2;
-id kf1.kf2 = kdotkminusq;
-.sort
 
 * --- MASSLESS APPROXIMATION ---
-* keeps the Melec in the fermion propagator
 id Melec = 0;
 id Mmuon = 0;
 #call Mandelstam2To2(p1,p2,p3,p4,0,0,0,0)
-id u = -s -t;
-
-* Save to file 
-Format C;
-#write <RenormalizationLO.txt> "%e;", MsqLO;
-#write <Renormalization.txt> "%e;", MInt;
 .sort
+Format C;
+#write <RunningBeforeSubst.txt> "%e;", MInt;
+Format;
+Print+s MInt;
+.sort
+
+* Replace the propagator function
+id prop(q.q) = 1/t;
+id prop(-Melec^2 + kf1.kf1) = 1/denom1;
+id prop(-Melec^2 + kf2.kf2) = 1/denom2;
+* Replace dot products involving loop momentum k
+* Apply shift 
+id kf1.p1? = fx*(t/2);;
+id kf2.p2? = (fx-1)*(-t/2);
+id kf1.kf2 = fx*(fx-1)*t;
+.sort
+
 * Print 
 Format;
 Print+s MInt;
 Print+s MsqLO;
+* Save to file 
+Format C;
+#write <RunningLO.txt> "%e;", MsqLO;
+#write <Running.txt> "%e;", MInt;
+.sort
 
 .end
