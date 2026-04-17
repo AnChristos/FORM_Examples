@@ -70,7 +70,6 @@ id  eps(mu1?,p?)*eps(mu2?,p?) = -d_(mu1,mu2);
 id  epsM(mu1?, p?, m?)*epsM(mu2?, p?, m?) = -d_(mu1,mu2) + p(mu1)*p(mu2)/(m^2);
 .sort:spinsum;
 
-
 #endprocedure
 
 
@@ -109,6 +108,7 @@ Multiply replace_(k6,k7,k7,k6);
 * gamma5 minus sign
 id  g(?a,k5) = -g(?a,k5);
 .sort
+
 #endprocedure 
 
 
@@ -137,8 +137,52 @@ repeat;
     id `p1'.`p4' = (`m1'^2 + `m4'^2 - u)/2;
     id `p2'.`p3' = (`m2'^2 + `m3'^2 - u)/2;
 endrepeat;
-
 .sort:kinematics-applied;
+
 #endprocedure
 
+*-------------------------------------------------------------------------*
+* Procedure: PVReduce
+* Passarino - Veltman Reduction
+*-------------------------------------------------------------------------*
+#procedure PVReduce(k, q, m0, m1)
+* tag propagators
+id prop(`k'.`k' - `m0'^2) = 1/Den(`k', `m0');
+id prop((`k'-`q').(`k'-`q') - `m1'^2) = 1/Den(`k'-`q', `m1');
+
+* Do replacements in numerator
+* k^2 identity
+id `k'.`k' = Den(`k', `m0') + `m0'^2;
+
+* k.q identity 
+    id `k'.`q' = 1/2 * (
+          Den(`k', `m0')- Den(`k'-`q', `m1')
+        + `q'.`q' + `m1'^2 - `m0'^2
+    );
+
+*  cancel terms
+repeat;
+    id Den(`k', `m0') * (1/Den(`k', `m0')) = 1;
+    id Den(`k'-`q', `m1') * (1/Den(`k'-`q', `m1')) = 1;
+endrepeat;
+
+* map to master integrals
+
+* Bubble
+id (1/Den(`k', `m0')) * (1/Den(`k'-`q', `m1')) 
+            = B0(`q'.`q', `m0'^2, `m1'^2);
+
+* Tadpoles
+id (1/Den(`k', `m0')) = A0(`m0'^2);
+id (1/Den(`k'-`q', `m1')) = A0(`m1'^2);
+
+* dimreg result
+id A0(0) = 0;
+
+#endprocedure
+
+
+
 #endif
+
+

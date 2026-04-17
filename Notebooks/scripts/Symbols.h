@@ -33,9 +33,11 @@ Index i1, ..., i`IMAX2';
 Index mu, i, k5=0, k6=0, k7=0;
 
 Vector p, p1, ..., p`MAXVEC';
-Vector q, q1, q2, q3;
+Vector k, q, q1, q2, q3;
 
-Symbols m, s, t, u, cv, ca;
-CF UB, U, VB, V, g, eps, epsM, fprop, phprop, Zprop, Wprop, prop;
+Symbols m, m0, m1, s, t, u, cv, ca;
 
+CF UB, U, VB, V, g, eps, epsM, 
+CF fprop, phprop, Zprop, Wprop, prop;
+CF  Den, A0, B0;
 #endif
