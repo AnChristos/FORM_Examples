@@ -34,5 +34,7 @@ Symbols s, t, u, cv, ca;
 
 CF UB, U, VB, V, g, eps, epsM, 
 CF fprop, phprop, Zprop, Wprop, prop;
-CF  Den, A0, B0;
+
+CF B0, B1, B21, B22, A0;
+Symbols Dminus1, f;
 
