@@ -26,7 +26,7 @@ Index mu1, ..., mu`MUMAX2';
 Index i1, ..., i`IMAX2';
 Index mu, i, k5=0, k6=0, k7=0;
 
-Vector p, p1, ..., p`MAXVEC';
+Vector v1, p, p1, ..., p`MAXVEC';
 Vector k, q, q1, q2, q3;
 
 Symbols m, m1, ..., m`MAXVEC';
