@@ -3,7 +3,7 @@
 * Defines global symbols for the procedures and routines
 * We "reserve" those
 *-------------------------------------------------------------------------*
-
+#-
 * --- Symbol Limits ---
 #ifndef `MAXLIMITS'
     #define MAXLIMITS "1"
@@ -26,7 +26,7 @@ Index mu1, ..., mu`MUMAX2';
 Index i1, ..., i`IMAX2';
 Index mu, i, k5=0, k6=0, k7=0;
 
-Vector v1, p, p1, ..., p`MAXVEC';
+Vector p, p1, ..., p`MAXVEC';
 Vector k, q, q1, q2, q3;
 
 Symbols m, m1, ..., m`MAXVEC';
@@ -37,4 +37,5 @@ CF fprop, phprop, Zprop, Wprop, prop;
 
 CF B0, B1, B21, B22, A0;
 Symbols Dminus1, f;
+#+
 
