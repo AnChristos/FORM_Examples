@@ -48,6 +48,6 @@ Local   `Mat' = `Amp'*`Amp'C;
 *
 Skip;
 NSkip `Mat';
-#call doTrace()
+#call doTrace(`$imax',0)
 
 #endprocedure
