@@ -28,7 +28,7 @@ Local M = (e^2) * (VB(i1, p2, 0) * g(i1, i2, mu1) * U(i2, p1, 0))
 * Spin averaging (1/2 * 1/2)
 multiply 1/4; 
 * coupling
-id e^4 = 16 * pi^2 * alpha^2;
+id e^2 = 4 * pi * alpha;
 * Drop higher-order terms (NNLO)
 id alpha^4 = 0;
 .sort
@@ -61,5 +61,11 @@ id ep = 0;
 .sort
 bracket alpha, pi, s;
 Print +s Msq;
+.sort
+* Save
+Format C;
+#write <ee_to_mumu_NLO.txt> "%e;", Msq;
+.sort
+
 
 .end
