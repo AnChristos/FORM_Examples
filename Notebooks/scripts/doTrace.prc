@@ -24,7 +24,7 @@ endrepeat;
 *
 #if `LOOP' == 0
     #do i = 1, `numT'
-    Trace4,`i';
+        Trace4,`i';
     #enddo
 #else
     #do i = 1,`numT'
