@@ -6,6 +6,8 @@
 Off Statistics;
 Off FinalStats;
 
+Symbol dim;
+Dimension dim;
 #include FeynHelpers.h
 
 Vectors k1,k2;
@@ -20,7 +22,7 @@ Local Bubble = (-e^2)
              * g(i3, i4, mu2) * fprop(i4, i1, k2, Melec);
 Print +ss Bubble;
 #call Propagators()
-#call doTrace(1,0)
+#call doTrace(1,1)
 .sort
 #message ">>>"
 Print +s Bubble ;

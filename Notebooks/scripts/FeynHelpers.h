@@ -16,8 +16,7 @@
     #define IMAX2 "80"       
     #define MUMAX2 "40"
     
-* Limits on lines and independent 4-momenta
-    #define MAXTRACE "10"    
+* Limits on lines and independent 4-momenta  
     #define MAXVEC "10"      
 #endif
 
