@@ -23,12 +23,10 @@ endrepeat;
 *   Finally take the traces
 *
 #if `LOOP' == 0
- #message ">>> TRACE MODE: LO (trace4, 4D)"
     #do i = 1, `numT'
     Trace4,`i';
     #enddo
 #else
-#message ">>> TRACE MODE: LOOP (tracen, d-dimensional)"
     #do i = 1,`numT'
         tracen,`i';
     #enddo
