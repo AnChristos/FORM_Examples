@@ -44,6 +44,9 @@ Symbols s, t, u;
 * V-A 
 Symbol cv, ca;
 
+* Reference vector
+Vector n;
+
 * Spinors
 CF UB, U, VB, V;
 
@@ -54,6 +57,6 @@ CF fprop, phprop, Zprop, Wprop, prop;
 CF gamma;
 
 * polarization sum
-CF esum, esumM; 
+CF esum, esumM, eTL, eTR, eL; 
 #+
 
